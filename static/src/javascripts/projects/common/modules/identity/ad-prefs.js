@@ -90,25 +90,32 @@ class ConsentBox extends Component<ConsentBoxProps, {}> {
     }
 }
 
-class ConsentBoxes extends Component<
-    {},
+class AdPrefsWrapper extends Component<
+    { allAdConsents: AdConsent[] },
     { consentsWithState: AdConsentWithState[], changesPending: boolean }
 > {
     constructor(props: {}): void {
         super(props);
         this.state = {
             changesPending: false,
-            consentsWithState: allAdConsents.map((consent: AdConsent) => ({
-                consent,
-                state: getAdConsentState(consent),
-            })),
+            consentsWithState: this.props.allAdConsents.map(
+                (consent: AdConsent) => ({
+                    consent,
+                    state: getAdConsentState(consent),
+                })
+            ),
         };
     }
 
-    onUpdate(consentId: number, state: AdConsentState): void {
-        const consentsWithState = [...this.state.consentsWithState];
-        const changesPending = consentsWithState[consentId].state !== state;
-        consentsWithState[consentId].state = state;
+    onUpdate(adConsent: AdConsent, state: AdConsentState): void {
+        const consentsWithState: AdConsentWithState[] = [
+            ...this.state.consentsWithState,
+        ];
+        const consentPointer: AdConsentWithState = consentsWithState.find(
+            (_: AdConsentWithState) => _.consent.cookie === adConsent.cookie
+        );
+        const changesPending: boolean = consentPointer.state !== state;
+        consentPointer.state = state;
         this.setState({
             consentsWithState,
             changesPending,
@@ -146,7 +153,10 @@ class ConsentBoxes extends Component<
                                 state={consentWithState.state}
                                 key={consentWithState.consent.cookie}
                                 onUpdate={(state: AdConsentState) => {
-                                    this.onUpdate(index, state);
+                                    this.onUpdate(
+                                        consentWithState.consent,
+                                        state
+                                    );
                                 }}
                             />
                         )
@@ -178,10 +188,16 @@ const enhanceAdPrefs = (): void => {
             wrapperEls.forEach(_ => {
                 fastdom.write(() => {
                     _.classList.remove('is-hidden');
-                    render(<ConsentBoxes />, _);
+                    render(<AdPrefsWrapper allAdConsents={allAdConsents} />, _);
                 });
             });
         });
 };
 
-export { enhanceAdPrefs };
+const _ = {
+    AdPrefsWrapper,
+    ConsentBox,
+    ConsentRadioButton,
+};
+
+export { enhanceAdPrefs, _ };
