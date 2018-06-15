@@ -36,9 +36,15 @@
                         <div class="media-primary player">
                         @media match {
                             case audio: Audio => {
+                                <figure data-component="main audio"
+                                    id="audio-component-container"
+                                    data-media-id="1234"
+                                    data-duration="audio.metadata"
+                                    data-source="my-test-url">
 
-                                <figure data-component="main audio">
-                                    <p>THE NEW AUDIO COMPONENT WILL GO IN HERE</p>
+                                    @*<p>"@model.Audio.acastUrl(player, encoding.url, isAdFree)"</p>*@
+
+                                    <p>Audio component here</p>
                                 </figure>
                             }
                             case video: Video => {

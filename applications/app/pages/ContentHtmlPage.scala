@@ -4,7 +4,7 @@ import common.Edition
 import controllers.{ImageContentPage, MediaPage, QuizAnswersPage, TodayNewspaper}
 import html.HtmlPageHelpers._
 import html.{HtmlPage, Styles}
-import model.{ApplicationContext, Audio, Page}
+import model.{ApplicationContext, Audio, AudioAsset, Page}
 import play.api.mvc.RequestHeader
 import play.twirl.api.Html
 import views.html.fragments._
@@ -16,7 +16,7 @@ import views.html.fragments.page.{devTakeShot, htmlTag}
 import views.html.{newspaperContent, quizAnswerContent}
 import html.HtmlPageHelpers.ContentCSSFile
 import conf.switches.Switches.WeAreHiring
-import experiments.{ActiveExperiments, OldTLSSupportDeprecation, AudioPageChange}
+import experiments.{ActiveExperiments, AudioPageChange, OldTLSSupportDeprecation}
 
 object ContentHtmlPage extends HtmlPage[Page] {
 
@@ -36,6 +36,16 @@ object ContentHtmlPage extends HtmlPage[Page] {
     def getMedia(page: MediaPage): Html  = {
 
       if(ActiveExperiments.isParticipating(AudioPageChange)) {
+
+        println("======")
+        page.media.elements.audioAssets.foreach(p => {
+          println(p)
+        })
+
+        println("main audio", page.media.elements.mainAudio)
+        val urlpls = page.media.elements.audioAssets.map(a => a.url.getOrElse("__").toString())
+        println("audio url??", urlpls)
+
         page.media match {
           case a: Audio => audioBody(page, displayCaption = false)
           case _ => mediaBody(page, displayCaption = false)
