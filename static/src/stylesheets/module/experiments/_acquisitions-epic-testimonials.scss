@@ -16,7 +16,7 @@
 }
 
 .epic__testimonial-container .epic__testimonial-quote .inline-garnett-quote svg {
-    fill: $yellow-highlight;
+    fill: $highlight-bold;
     width: $gs-gutter;
     height: $gs-gutter;
     padding-left: 10px;
@@ -62,7 +62,7 @@
 .contributions__title--epic--subtle {
     @include fs-header(3);
     display: inline;
-    border-top: 1px solid $yellow-highlight;
+    border-top: 1px solid $highlight-bold;
     padding-top: $gs-baseline / 3;
 }
 
