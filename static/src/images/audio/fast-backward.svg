@@ -1,9 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" viewBox="0 0 28 24">
-    <g fill="none" fill-rule="evenodd" opacity=".369">
-        <text fill="#FFF" font-family="DS5DisplaySansSemibold, DS5 Display Sans Semibold" font-size="15" font-weight="500">
-            <tspan x="0" y="22.143">15</tspan>
-        </text>
-        <path stroke="#FFF" stroke-width="2" d="M16.776 21.63c5.135 0 9.298-3.817 9.298-8.524 0-4.707-4.163-8.523-9.298-8.523H6.074"/>
-        <path fill="#FFF" d="M2 4.583l10 4.584V0z"/>
-    </g>
-</svg>
+<svg width="28px" height="24px" viewBox="0 0 28 24" xmlns="http://www.w3.org/2000/svg"><title>Fast forward Back</title><g id="Page-1" fill="none" fill-rule="evenodd"><g id="05-Desktop-HalfWayAudioPage-2" transform="translate(-146 -431)"><g id="Fast-forward-Back" transform="translate(146 431)"><text id="15" font-family="DS5DisplaySansSemibold, DS5 Display Sans Semibold" font-size="15" font-weight="500" fill="#FFFFFF"><tspan x="0" y="22.1428571">15</tspan></text><g id="Arrow" transform="matrix(-1 0 0 1 27 0)"><path d="M11.628701,21.6291694 C16.7636948,21.6291694 20.9264298,17.813329 20.9264298,13.1062514 C20.9264298,8.39917371 16.7636948,4.58333333 11.628701,4.58333333 C8.20537183,4.58333333 4.63794808,4.58333333 0.926429775,4.58333333" id="Oval" stroke="#FFFFFF" stroke-width="2" transform="matrix(-1 0 0 1 21.853 0)"/><path id="Triangle" fill="#FFFFFF" d="M25 4.58333333L15 9.16666667 15 0z"/></g></g></g></g></svg>

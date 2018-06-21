@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 78 78">
-    <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-        <circle cx="38" cy="38" r="38" fill="#00B2FF" stroke="#00B2FF" stroke-width="2"/>
-        <path fill="#FFF" d="M25.62 21.714l-1.191.927v28.052l1.195.878 34.09-14.17v-1.514z"/>
-    </g>
-</svg>
+<svg width="78px" height="78px" viewBox="0 0 78 78" xmlns="http://www.w3.org/2000/svg"><title>play btn</title><g id="Page-1" fill="none" fill-rule="evenodd"><g id="05-Desktop-HalfWayAudioPage-1" transform="translate(-195 -403)"><g id="play-btn" transform="translate(196 404)"><circle id="Oval-2" stroke="#00B2FF" stroke-width="2" fill="#00B2FF" cx="38" cy="38" r="38"/><path id="Page-1" fill="#FFFFFF" d="M25.6203361 21.7142857L24.4285714 22.6406981 24.4285714 50.6928751 25.6237218 51.5714286 59.7142857 37.4017632 59.7142857 35.8873696z"/></g></g></g></svg>
