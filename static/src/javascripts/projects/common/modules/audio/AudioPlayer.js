@@ -345,18 +345,8 @@ export default class AudioPlayer extends Component {
         });
     };
 
-    render({
-        ready,
-        started,
-        playing,
-        currentTime,
-        duration,
-        volume,
-        canvasH,
-        bins,
-        iteration,
-    }) {
-        const currentOffset = ready ? (currentTime / duration) * 100 : 0;
+    render() {
+        const currentOffset = this.state.ready ? (this.state.currentTime / this.state.duration) * 100 : 0;
 
         return (
             <AudioGrid>
@@ -406,10 +396,10 @@ export default class AudioPlayer extends Component {
                     <Wave
                         innerRef={this.setCanvas}
                         colour={pillarsHighlight.sport}>
-                        {ready
-                            ? bins.map(
+                        {this.state.ready
+                            ? this.state.bins.map(
                                   (barHeight, i) =>
-                                      i < iteration ? (
+                                      i < this.state.iteration ? (
                                           <rect
                                               x={i * (this.props.barWidth + 1)}
                                               y={this.state.canvasH - barHeight}
@@ -417,7 +407,7 @@ export default class AudioPlayer extends Component {
                                               height={barHeight}
                                               fill={this.props.highlightColor}
                                           />
-                                      ) : i < iteration + 1 ? (
+                                      ) : i < this.state.iteration + 1 ? (
                                           <rect
                                               x={i * (this.props.barWidth + 1)}
                                               y={this.state.canvasH}
