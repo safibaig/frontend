@@ -38,11 +38,9 @@
                             case audio: Audio => {
                                 <figure data-component="main audio"
                                     id="audio-component-container"
-                                    data-media-id="1234"
-                                    data-duration="audio.metadata"
-                                    data-source="my-test-url">
+                                    data-media-id="@audio.elements.mainAudio.map { audioElement => @audioElement.properties.id}"
+                                    data-source="@audio.downloadUrl.map(Audio.acastUrl)">
 
-                                    @*<p>"@model.Audio.acastUrl(player, encoding.url, isAdFree)"</p>*@
 
                                     <p>Audio component here</p>
                                 </figure>

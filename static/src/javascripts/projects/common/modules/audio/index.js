@@ -16,17 +16,18 @@ class AudioContainer extends Component {
         return (
             <Player
                 sourceUrl={this.props.source}
-                duration={this.props.duration}
                 mediaId={this.props.mediaId}
+                barWidth={2}
                 css={cssProps}
                 controls="controls"
+                neutralColor="#767676"
+                highlightColor="blue"
             />
         );
     }
 }
 
 const init = (): void => {
-    console.log('====this condition was triggered ====');
     const placeholder: ?HTMLElement = document.getElementById(
         'audio-component-container'
     );

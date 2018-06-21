@@ -9,8 +9,18 @@ import {
     tablet,
     leftCol,
     wide,
-} from '@guardian/dotcom-rendering/pasteup/breakpoints';
-import palette from '@guardian/dotcom-rendering/pasteup/palette';
+} from '@guardian/dotcom-rendering/packages/pasteup/breakpoints';
+import palette from '@guardian/dotcom-rendering/packages/pasteup/palette';
+
+import download from 'svgs/journalism/audio-player/download.svg';
+import pauseBtn from 'svgs/journalism/audio-player/pause-btn.svg';
+import playBtn from 'svgs/journalism/audio-player/play-btn.svg';
+import volume from 'svgs/journalism/audio-player/volume.svg';
+import fastBackward from 'svgs/journalism/audio-player/fast-backward.svg';
+import fastForward from 'svgs/journalism/audio-player/fast-forward.svg';
+import fastBackwardActive from 'svgs/journalism/audio-player/fast-backward-active.svg'
+import fastForwardActive from 'svgs/journalism/audio-player/fast-forward-active.svg';
+
 
 import { formatTime } from './utils';
 
@@ -352,7 +362,6 @@ export default class AudioPlayer extends Component {
             <AudioGrid>
                 <audio
                     ref={this.setAudio}
-                    controls={this.props.controls}
                     data-media-id={this.props.mediaId}
                     preload="metadata">
                     <source src={this.props.sourceUrl} type="audio/mpeg" />
@@ -361,30 +370,21 @@ export default class AudioPlayer extends Component {
                     <Button
                         isPlay={false}
                         onClick={this.backward}
-                        disabled={!this.state.playing}>
-                        {this.state.playing ? (
-                            <img src="/static/icons/fast-backward-active.svg" />
-                        ) : (
-                            <img src="/static/icons/fast-backward.svg" />
-                        )}
+                        disabled={!this.state.playing}
+                        dangerouslySetInnerHTML={{__html: this.state.playing ? fastBackwardActive.markup : fastBackward.markup }}>
                     </Button>
-                    <Button isPlay onClick={this.play}>
-                        {this.state.playing ? (
-                            <img src="/static/icons/pause-btn.svg" />
-                        ) : (
-                            <img src="/static/icons/play-btn.svg" />
-                        )}
+                    <Button isPlay
+                            onClick={this.play}
+                            dangerouslySetInnerHTML={{__html: this.state.playing ? pauseBtn.markup: playBtn.markup }}>
                     </Button>
+
                     <Button
                         isPlay={false}
                         onClick={this.forward}
                         disabled={!this.state.playing}>
-                        {this.state.playing ? (
-                            <img src="/static/icons/fast-forward-active.svg" />
-                        ) : (
-                            <img src="/static/icons/fast-forward.svg" />
-                        )}
+                        <span dangerouslySetInnerHTML={{__html: this.state.playing ? fastForwardActive.markup : fastForward.markup}}></span>
                     </Button>
+
                 </Controls>
                 <TimeSpan area="currentTime">
                     <Time t={this.state.currentTime} />
@@ -444,7 +444,7 @@ export default class AudioPlayer extends Component {
                     ''
                 ) : (
                     <Volume>
-                        <img src="/static/icons/volume.svg" />
+                        <span dangerouslySetInnerHTML={{__html: volume.markup}}></span>
                         <ProgressBar
                             value={this.state.volume * 100}
                             formattedValue={`Volume set to ${
@@ -460,7 +460,7 @@ export default class AudioPlayer extends Component {
                 <Download>
                     <a href="#">
                         Download MP3
-                        <img src="/static/icons/download.svg" />
+                        <span dangerouslySetInnerHTML={{__html: download.markup }}></span>
                     </a>
                 </Download>
                 <Links>

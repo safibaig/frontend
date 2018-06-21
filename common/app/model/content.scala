@@ -567,6 +567,7 @@ object Audio {
   }
 
   def acastUrl(player: AudioPlayer, url: String, isAdFree: Boolean): String = if (player.audio.tags.isPodcast && !isAdFree) "https://flex.acast.com/" + url.replace("https://", "") else url
+  def acastUrl(url: String): String = "https://flex.acast.com/" + url.replace("https://", "")
 }
 
 final case class Audio (override val content: Content) extends ContentType {

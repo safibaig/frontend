@@ -8,12 +8,30 @@
     /* height of the player affects margins - set once */
     $playerheight: 10em;
 
+    * {
+        box-sizing: border-box;
+    }
+    ul {
+        margin: 0;
+        list-style-type: none;
+        line-height: 1.5rem;
+        img {
+            display: inline-block;
+        }
+    }
+
     h1, h2, h3, li, p {
         color: #dcdcdc;
     }
     .player {
-        background-color: #ff0000;
-        height: $playerheight
+        //background-color: #ff0000;
+        line-height: 0;
+        .inline-download {
+            svg {
+                width: auto;
+                height: auto;
+            }
+        }
     }
 
     @media (max-width: 46.24em) {
@@ -28,7 +46,7 @@
             margin-left: -10rem;
         }
         .content__meta-container {
-            margin-top: $playerheight;
+            margin-top: $playerheight; // this needs to know the height of the player at 71em +
         }
     }
     @media (min-width: 81.25em) {

@@ -37,15 +37,6 @@ object ContentHtmlPage extends HtmlPage[Page] {
 
       if(ActiveExperiments.isParticipating(AudioPageChange)) {
 
-        println("======")
-        page.media.elements.audioAssets.foreach(p => {
-          println(p)
-        })
-
-        println("main audio", page.media.elements.mainAudio)
-        val urlpls = page.media.elements.audioAssets.map(a => a.url.getOrElse("__").toString())
-        println("audio url??", urlpls)
-
         page.media match {
           case a: Audio => audioBody(page, displayCaption = false)
           case _ => mediaBody(page, displayCaption = false)
