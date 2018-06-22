@@ -1,5 +1,4 @@
 // @flow
-import reportError from 'lib/report-error';
 
 const ERR_INVALID_COOKIE_NAME = `Cookie must not contain invalid characters (space, tab and the following characters: '()<>@,;"/[]?={}')`;
 
@@ -50,11 +49,7 @@ const addCookie = (
     const expires = new Date();
 
     if (!isValidCookieValue(name) || !isValidCookieValue(value)) {
-        reportError(
-            new Error(`${ERR_INVALID_COOKIE_NAME} .${name}=${value}`),
-            {},
-            false
-        );
+        new Error(`${ERR_INVALID_COOKIE_NAME} . ${name}=${value}`);
     }
 
     if (daysToLive) {
@@ -85,11 +80,7 @@ const addForMinutes = (
     const expires = new Date();
 
     if (!isValidCookieValue(name) || !isValidCookieValue(value)) {
-        reportError(
-            new Error(`${ERR_INVALID_COOKIE_NAME} .${name}=${value}`),
-            {},
-            false
-        );
+        new Error(`${ERR_INVALID_COOKIE_NAME} . ${name}=${value}`);
     }
 
     expires.setMinutes(expires.getMinutes() + minutesToLive);
@@ -98,11 +89,7 @@ const addForMinutes = (
 
 const addSessionCookie = (name: string, value: string): void => {
     if (!isValidCookieValue(name) || !isValidCookieValue(value)) {
-        reportError(
-            new Error(`${ERR_INVALID_COOKIE_NAME} .${name}=${value}`),
-            {},
-            false
-        );
+        new Error(`${ERR_INVALID_COOKIE_NAME} . ${name}=${value}`);
     }
     document.cookie = `${name}=${value}; path=/;${getDomainAttribute()}`;
 };
