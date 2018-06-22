@@ -49,7 +49,7 @@ const addCookie = (
     const expires = new Date();
 
     if (!isValidCookieValue(name) || !isValidCookieValue(value)) {
-        new Error(`${ERR_INVALID_COOKIE_NAME} . ${name}=${value}`);
+        throw Error(`${ERR_INVALID_COOKIE_NAME} . ${name}=${value}`);
     }
 
     if (daysToLive) {
@@ -80,7 +80,7 @@ const addForMinutes = (
     const expires = new Date();
 
     if (!isValidCookieValue(name) || !isValidCookieValue(value)) {
-        new Error(`${ERR_INVALID_COOKIE_NAME} . ${name}=${value}`);
+        throw Error(`${ERR_INVALID_COOKIE_NAME} . ${name}=${value}`);
     }
 
     expires.setMinutes(expires.getMinutes() + minutesToLive);
@@ -89,7 +89,7 @@ const addForMinutes = (
 
 const addSessionCookie = (name: string, value: string): void => {
     if (!isValidCookieValue(name) || !isValidCookieValue(value)) {
-        new Error(`${ERR_INVALID_COOKIE_NAME} . ${name}=${value}`);
+        throw Error(`${ERR_INVALID_COOKIE_NAME} . ${name}=${value}`);
     }
     document.cookie = `${name}=${value}; path=/;${getDomainAttribute()}`;
 };
